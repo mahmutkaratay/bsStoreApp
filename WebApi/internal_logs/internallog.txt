@@ -40,3 +40,21 @@
 2023-03-04 00:02:10.2626 Info Message Template Auto Format enabled
 2023-03-04 00:02:10.3272 Info Registered target NLog.Targets.FileTarget(Name=logfile)
 2023-03-04 00:02:10.3520 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-05 11:37:41.3162 Info Message Template Auto Format enabled
+2023-03-05 11:37:41.4145 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-05 11:37:41.4486 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-05 11:42:21.0116 Info Message Template Auto Format enabled
+2023-03-05 11:42:21.0840 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-05 11:42:21.1107 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-05 11:43:28.6154 Info Message Template Auto Format enabled
+2023-03-05 11:43:28.6927 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-05 11:43:28.7187 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-05 11:48:04.5526 Info Message Template Auto Format enabled
+2023-03-05 11:48:04.6241 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-05 11:48:04.6498 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-05 11:48:56.0156 Info Message Template Auto Format enabled
+2023-03-05 11:48:56.0921 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-05 11:48:56.1165 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-05 12:00:37.0059 Info Message Template Auto Format enabled
+2023-03-05 12:00:37.0797 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-05 12:00:37.1063 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
