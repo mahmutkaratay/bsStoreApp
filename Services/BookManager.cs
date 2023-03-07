@@ -2,6 +2,7 @@
 using Entities.DataTransferObjects;
 using Entities.Exceptions;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Repositories.Contracts;
 using Services.Contracts;
 
@@ -31,47 +32,50 @@ namespace Services
 
         public async Task DeleteOneBookAsync(int id, bool trackChanges)
         {
-            var entity =await GetOneBookByIdAndCheckExists(id, trackChanges);
-         
+            var entity = await GetOneBookByIdAndCheckExists(id, trackChanges);
+
             _manager.Book.DeleteOneBook(entity);
             await _manager.SaveAsync();
         }
 
-        
 
-        public async Task<IEnumerable<BookDto>> GetAllBooksAsync(bool trackChanges)
+
+        public async Task<(IEnumerable<BookDto> books, MetaData metaData)> GetAllBooksAsync(BookParameters bookParameters, bool trackChanges)
         {
-            var books = await _manager.Book.GetAllBooksAsync(trackChanges);
-            return _mapper.Map<IEnumerable<BookDto>>(books);
+            var booksWithMetaData = await _manager.Book.
+                GetAllBooksAsync(bookParameters, trackChanges);
+
+            var booksDto = _mapper.Map<IEnumerable<BookDto>>(booksWithMetaData);
+            return (booksDto, booksWithMetaData.MetaData);
         }
 
-       
+
         public async Task<BookDto> GetOneBookByIdAsync(int id, bool trackChanges)
         {
-            var book= await GetOneBookByIdAndCheckExists(id, trackChanges);
+            var book = await GetOneBookByIdAndCheckExists(id, trackChanges);
 
             return _mapper.Map<BookDto>(book);
         }
 
-       
+
 
         public async Task<(BookDtoForUpdate bookDtoForUpdate, Book book)> GetOneBookForPatchAsync(int id, bool trackChanges)
         {
-            var book= await GetOneBookByIdAndCheckExists(id, trackChanges);
+            var book = await GetOneBookByIdAndCheckExists(id, trackChanges);
 
 
             var bookDtoForUpdate = _mapper.Map<BookDtoForUpdate>(book);
             return (bookDtoForUpdate, book);
         }
 
-      
+
         public async Task SaveChangesForPatchAsync(BookDtoForUpdate bookDtoForUpdate, Book book)
         {
             _mapper.Map<BookDtoForUpdate>(book);
             await _manager.SaveAsync();
         }
 
-        
+
         public async Task UpdateOneBookAsync(int id, BookDtoForUpdate bookDto, bool trackChanges)
         {
             var entity = await GetOneBookByIdAndCheckExists(id, trackChanges);
