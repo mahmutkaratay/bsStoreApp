@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Linq.Dynamic.Core;
 namespace Repositories.EfCore
 {
     public sealed class BookRepository : RepositoryBase<Book>, IBookRepository
@@ -22,7 +22,7 @@ namespace Repositories.EfCore
             var books = await FindAll(trackChanges)
                    .FilterBooks(bookParameters.MinPrice, bookParameters.MaxPrice)
                    .Search(bookParameters.SearchTerm)
-                   .OrderBy(b => b.Id)
+                   .OrderBy(bookParameters.OrderBy)
                    .ToListAsync();
 
             return PagedList<Book>.ToPagedList(books, bookParameters.PageNumber, bookParameters.PageSize);
