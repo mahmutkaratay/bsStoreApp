@@ -5,6 +5,7 @@ using Entities.Models;
 using Entities.RequestFeatures;
 using Repositories.Contracts;
 using Services.Contracts;
+using System.Dynamic;
 
 namespace Services
 {
@@ -13,12 +14,13 @@ namespace Services
         private readonly IRepositoryManager _manager;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
-
-        public BookManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper)
+        private readonly IDataShaper<BookDto> _shaper;
+        public BookManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper, IDataShaper<BookDto> shaper)
         {
             _manager = manager;
             _logger = logger;
             _mapper = mapper;
+            _shaper = shaper;
         }
 
         public async Task<BookDto> CreateOneBookAsync(BookDtoForInsertion bookDtoForInsertion)
@@ -40,7 +42,7 @@ namespace Services
 
 
 
-        public async Task<(IEnumerable<BookDto> books, MetaData metaData)> GetAllBooksAsync(BookParameters bookParameters, bool trackChanges)
+        public async Task<(IEnumerable<ExpandoObject> books, MetaData metaData)> GetAllBooksAsync(BookParameters bookParameters, bool trackChanges)
         {
             if (!bookParameters.ValidPriceRange)
             {
@@ -51,7 +53,9 @@ namespace Services
                 GetAllBooksAsync(bookParameters, trackChanges);
 
             var booksDto = _mapper.Map<IEnumerable<BookDto>>(booksWithMetaData);
-            return (booksDto, booksWithMetaData.MetaData);
+
+            var shapedData = _shaper.ShapeData(booksDto, bookParameters.Fields);
+            return (books: shapedData, metaData: booksWithMetaData.MetaData);
         }
 
 
