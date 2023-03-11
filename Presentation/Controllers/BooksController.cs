@@ -55,7 +55,7 @@ namespace Presentation.Controllers
 
 
         [ServiceFilter(typeof(ValidationFilterAttibute))]
-        [HttpPost]
+        [HttpPost(Name = "CreateOneBookAsync")]
         public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion bookDto)
         {
             if (bookDto is null)
