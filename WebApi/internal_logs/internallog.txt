@@ -115,3 +115,39 @@
 2023-03-10 09:47:14.1024 Info Message Template Auto Format enabled
 2023-03-10 09:47:14.9417 Info Registered target NLog.Targets.FileTarget(Name=logfile)
 2023-03-10 09:47:15.0265 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-10 14:52:21.3890 Info Message Template Auto Format enabled
+2023-03-10 14:52:21.4776 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-10 14:52:21.5078 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-11 12:14:06.5699 Info Message Template Auto Format enabled
+2023-03-11 12:14:06.7185 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-11 12:14:06.7569 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-11 12:15:53.3560 Info Message Template Auto Format enabled
+2023-03-11 12:15:53.5225 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-11 12:15:53.6032 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-11 12:16:51.5638 Info Message Template Auto Format enabled
+2023-03-11 12:16:51.7447 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-11 12:16:51.7990 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-11 12:17:05.2086 Info Message Template Auto Format enabled
+2023-03-11 12:17:05.4047 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-11 12:17:05.4750 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-11 12:21:41.2870 Info Message Template Auto Format enabled
+2023-03-11 12:21:41.5425 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-11 12:21:41.6582 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-11 12:42:59.6051 Info Message Template Auto Format enabled
+2023-03-11 12:42:59.9624 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-11 12:43:00.0432 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-11 12:44:31.2872 Info Message Template Auto Format enabled
+2023-03-11 12:44:31.4281 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-11 12:44:31.4743 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-11 12:53:58.3919 Info Message Template Auto Format enabled
+2023-03-11 12:53:58.4997 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-11 12:53:58.5268 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-11 12:56:05.4042 Info Message Template Auto Format enabled
+2023-03-11 12:56:05.4789 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-11 12:56:05.5022 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-11 13:03:13.1694 Info Message Template Auto Format enabled
+2023-03-11 13:03:13.2627 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-11 13:03:13.2920 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config
+2023-03-11 13:05:41.9730 Info Message Template Auto Format enabled
+2023-03-11 13:05:42.0342 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-03-11 13:05:42.0583 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=D:\Projeler\bsStoreApp\WebApi\nlog.config

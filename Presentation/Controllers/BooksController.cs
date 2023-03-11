@@ -21,18 +21,29 @@ namespace Presentation.Controllers
             _manager = manager;
         }
 
-       
+
         [HttpGet]
-        public async Task<IActionResult> GetAllBooksAsync([FromQuery]BookParameters bookParameters)
+        [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
+        public async Task<IActionResult> GetAllBooksAsync([FromQuery] BookParameters bookParameters)
         {
-            var pagedResult = await _manager
+            var linkParameters = new LinkParameters()
+            {
+                BookParameters = bookParameters,
+                HttpContext = HttpContext
+            };
+
+            var result = await _manager
                 .BookService
-                .GetAllBooksAsync(bookParameters,false);
-            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
-            return Ok(pagedResult.books);
+                .GetAllBooksAsync(linkParameters, false);
+
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(result.metaData));
+
+            return result.linkResponse.HasLinks ? 
+                Ok(result.linkResponse.LinkedEntities) : 
+                Ok(result.linkResponse.ShapedEntities);
         }
 
-        
+
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneBookAsync([FromRoute(Name = "id")] int id)
@@ -56,7 +67,7 @@ namespace Presentation.Controllers
             return StatusCode(201, bookDto);  //CreatedAtRoute();
         }
 
-      
+
 
 
         [ServiceFilter(typeof(ValidationFilterAttibute))]
@@ -67,14 +78,14 @@ namespace Presentation.Controllers
             {
                 return BadRequest(); //400
             }
-           
+
             await _manager.BookService.UpdateOneBookAsync(id, bookDto, false);
 
             return NoContent();
         }
 
 
-       
+
 
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteOneBooksAsync([FromRoute(Name = "id")] int id)
@@ -85,7 +96,7 @@ namespace Presentation.Controllers
         }
 
 
-      
+
 
         [HttpPatch("{id:int}")]
         public async Task<IActionResult> PartiallyUpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<BookDtoForUpdate> bookPatch)
