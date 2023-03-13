@@ -28,6 +28,13 @@ namespace Repositories.EfCore
             return PagedList<Book>.ToPagedList(books, bookParameters.PageNumber, bookParameters.PageSize);
         }
 
+        public async Task<List<Book>> GetAllBooksAsync(bool trackChanges)
+        {
+            return await FindAll(trackChanges)
+                .OrderBy(b => b.Id)
+                .ToListAsync();
+        }
+
         public void CreateOneBook(Book book) => Create(book);
 
         public void DeleteOneBook(Book book) => Delete(book);
@@ -38,6 +45,7 @@ namespace Repositories.EfCore
 
 
         public void UpdateOneBook(Book book) => Update(book);
+
 
     }
 }
