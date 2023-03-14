@@ -102,5 +102,20 @@ namespace WebApi.Extensions
 
             });
         }
+
+        public static void ConfigureResponseCaching(this IServiceCollection services) =>
+            services.AddResponseCaching();
+
+        public static void ConfigureHttpCacheHeaders(this IServiceCollection services) =>
+            services.AddHttpCacheHeaders(exprationOpt =>
+            {
+                exprationOpt.MaxAge = 90;
+                exprationOpt.CacheLocation = Marvin.Cache.Headers.CacheLocation.Private;
+            }
+            , validationOpt =>
+            {
+                validationOpt.MustRevalidate = false;
+            });
+
     }
 }
