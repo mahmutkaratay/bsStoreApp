@@ -2,6 +2,7 @@
 using Entities.Models;
 using Entities.RequestFeatures;
 using Marvin.Cache.Headers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.ActionFilters;
@@ -16,6 +17,7 @@ namespace Presentation.Controllers
     [Route("api/books")]
     //[ResponseCache(CacheProfileName = "5mins")]
     //[HttpCacheExpiration(CacheLocation = CacheLocation.Public, MaxAge = 80)]
+    //[Authorize]
     public class BooksController : ControllerBase
     {
         private readonly IServiceManager _manager;
@@ -25,6 +27,7 @@ namespace Presentation.Controllers
             _manager = manager;
         }
 
+        [Authorize]
         [HttpHead]
         [HttpGet(Name = "GetAllBooksAsync")]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
@@ -49,6 +52,7 @@ namespace Presentation.Controllers
 
 
 
+        [Authorize]
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneBookAsync([FromRoute(Name = "id")] int id)
         {
@@ -58,6 +62,7 @@ namespace Presentation.Controllers
         }
 
 
+        [Authorize(Roles = "Editor, Admin")]
         [ServiceFilter(typeof(ValidationFilterAttibute))]
         [HttpPost(Name = "CreateOneBookAsync")]
         public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion bookDto)
@@ -73,7 +78,7 @@ namespace Presentation.Controllers
 
 
 
-
+        [Authorize(Roles = "Editor, Admin")]
         [ServiceFilter(typeof(ValidationFilterAttibute))]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] BookDtoForUpdate bookDto)
@@ -91,6 +96,7 @@ namespace Presentation.Controllers
 
 
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteOneBooksAsync([FromRoute(Name = "id")] int id)
         {
@@ -102,6 +108,7 @@ namespace Presentation.Controllers
 
 
 
+        [Authorize(Roles = "Editor, Admin")]
         [HttpPatch("{id:int}")]
         public async Task<IActionResult> PartiallyUpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<BookDtoForUpdate> bookPatch)
         {
@@ -128,6 +135,7 @@ namespace Presentation.Controllers
         }
 
 
+        [Authorize]
         [HttpOptions]
         public IActionResult GetBooksOptions()
         {
